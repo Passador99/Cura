@@ -54,7 +54,7 @@ Column
     {
         id: printerTypeSelectionRow
         height: UM.Theme.getSize("sidebar_setup").height
-        visible: printerConnected && hasManyPrinterTypes && !sidebar.hideSettings
+        visible: printerConnected && hasManyPrinterTypes && !sidebar.monitoringPrint && !sidebar.hideSettings
 
         anchors
         {
@@ -71,7 +71,7 @@ Column
             width: Math.round(parent.width * 0.4 - UM.Theme.getSize("default_margin").width)
             height: parent.height
             verticalAlignment: Text.AlignVCenter
-            font: UM.Theme.getFont("default");
+            font: UM.Theme.getFont("doppiobis_default");
             color: UM.Theme.getColor("text");
         }
 
@@ -104,7 +104,7 @@ Column
         id: extruderSelectionRow
         width: parent.width
         height: Math.round(UM.Theme.getSize("sidebar_tabs").height * 2 / 3)
-        visible: machineExtruderCount.properties.value > 1
+        visible: machineExtruderCount.properties.value > 1 && !sidebar.monitoringPrint
 
         anchors
         {
@@ -164,12 +164,8 @@ Column
                     onClicked: {
                         switch (mouse.button) {
                             case Qt.LeftButton:
-                                extruder_enabled = Cura.MachineManager.getExtruder(model.index).isEnabled
-                                if (extruder_enabled)
-                                {
-                                    forceActiveFocus(); // Changing focus applies the currently-being-typed values so it can change the displayed setting values.
-                                    Cura.ExtruderManager.setActiveExtruderIndex(index);
-                                }
+                                forceActiveFocus(); // Changing focus applies the currently-being-typed values so it can change the displayed setting values.
+                                Cura.ExtruderManager.setActiveExtruderIndex(index);
                                 break;
                             case Qt.RightButton:
                                 extruder_enabled = Cura.MachineManager.getExtruder(model.index).isEnabled
@@ -268,13 +264,13 @@ Column
 
                                 color: buttonColor(index)
 
-                                font: UM.Theme.getFont("large_nonbold")
+                                font: UM.Theme.getFont("doppiobis_large_nonbold")
                                 text: catalog.i18nc("@label", "Extruder")
                                 visible: width < (control.width - extruderIconItem.width - UM.Theme.getSize("default_margin").width)
                                 elide: Text.ElideRight
                             }
 
-                            // Everything for the extruder icon
+                            // Everthing for the extruder icon
                             Item
                             {
                                 id: extruderIconItem
@@ -310,7 +306,7 @@ Column
                                     anchors.centerIn: parent
                                     text: index + 1;
                                     color: buttonColor(index)
-                                    font: UM.Theme.getFont("default_bold")
+                                    font: UM.Theme.getFont("doppiobis_default_bold")
                                 }
 
                                 // Material colour circle
@@ -360,7 +356,7 @@ Column
     {
         id: materialRow
         height: UM.Theme.getSize("sidebar_setup").height
-        visible: Cura.MachineManager.hasMaterials && !sidebar.hideSettings
+        visible: Cura.MachineManager.hasMaterials && !sidebar.monitoringPrint && !sidebar.hideSettings
 
         anchors
         {
@@ -377,8 +373,8 @@ Column
             width: Math.round(parent.width * 0.45 - UM.Theme.getSize("default_margin").width)
             height: parent.height
             verticalAlignment: Text.AlignVCenter
-            font: UM.Theme.getFont("default");
-            color: UM.Theme.getColor("text");
+            font: UM.Theme.getFont("doppiobis_default");
+            color: UM.Theme.getColor("sidebar_lining");
         }
 
         ToolButton
@@ -412,7 +408,7 @@ Column
                 {
                     return false;
                 }
-                return Cura.ContainerManager.getContainerMetaDataEntry(activeExtruder.material.id, "compatible", "") == "True"
+                return Cura.ContainerManager.getContainerMetaDataEntry(activeExtruder.material.id, "compatible") == "True"
             }
         }
     }
@@ -422,7 +418,7 @@ Column
     {
         id: variantRow
         height: UM.Theme.getSize("sidebar_setup").height
-        visible: Cura.MachineManager.hasVariants && !sidebar.hideSettings
+        visible: Cura.MachineManager.hasVariants && !sidebar.monitoringPrint && !sidebar.hideSettings
 
         anchors
         {
@@ -439,7 +435,7 @@ Column
             width: Math.round(parent.width * 0.45 - UM.Theme.getSize("default_margin").width)
             height: parent.height
             verticalAlignment: Text.AlignVCenter
-            font: UM.Theme.getFont("default");
+            font: UM.Theme.getFont("doppiobis_default");
             color: UM.Theme.getColor("text");
         }
 
@@ -476,8 +472,8 @@ Column
     {
         id: buildplateRow
         height: UM.Theme.getSize("sidebar_setup").height
-        // TODO Only show in dev mode. Remove check when feature ready
-        visible: CuraSDKVersion == "dev" ? Cura.MachineManager.hasVariantBuildplates && !sidebar.hideSettings : false
+        // TODO Temporary hidden, add back again when feature ready
+        visible: false //Cura.MachineManager.hasVariantBuildplates && !sidebar.monitoringPrint && !sidebar.hideSettings
 
         anchors
         {
@@ -494,7 +490,7 @@ Column
             width: Math.floor(parent.width * 0.45 - UM.Theme.getSize("default_margin").width)
             height: parent.height
             verticalAlignment: Text.AlignVCenter
-            font: UM.Theme.getFont("default");
+            font: UM.Theme.getFont("doppiobis_default");
             color: UM.Theme.getColor("text");
         }
 
@@ -523,7 +519,7 @@ Column
     {
         id: materialInfoRow
         height: Math.round(UM.Theme.getSize("sidebar_setup").height / 2)
-        visible: (Cura.MachineManager.hasVariants || Cura.MachineManager.hasMaterials || Cura.MachineManager.hasVariantBuildplates) && !sidebar.hideSettings
+        visible: (Cura.MachineManager.hasVariants || Cura.MachineManager.hasMaterials || Cura.MachineManager.hasVariantBuildplates) && !sidebar.monitoringPrint && !sidebar.hideSettings
 
         anchors
         {
@@ -533,17 +529,16 @@ Column
             rightMargin: UM.Theme.getSize("sidebar_margin").width
         }
 
-        // TODO This was added to replace the buildplate selector. Remove this component when the feature is ready
         Label
         {
             id: materialCompatibilityLabel
             y: -Math.round(UM.Theme.getSize("sidebar_margin").height / 3)
             anchors.left: parent.left
             width: parent.width - materialCompatibilityLink.width
-            text: catalog.i18nc("@label", "Use glue with this material combination")
-            font: UM.Theme.getFont("very_small")
+            text: catalog.i18nc("@label", "Use adhesion sheet or glue with this material combination")
+            font: UM.Theme.getFont("doppiobis_very_small")
             color: UM.Theme.getColor("text")
-            visible: CuraSDKVersion == "dev" ? false : buildplateCompatibilityError || buildplateCompatibilityWarning
+            visible: buildplateCompatibilityError || buildplateCompatibilityWarning
             wrapMode: Text.WordWrap
             opacity: 0.5
         }
@@ -570,10 +565,12 @@ Column
             }
 
             Label {
+                visible: false
+
                 id: materialInfoLabel
                 wrapMode: Text.WordWrap
                 text: "<a href='%1'>" + catalog.i18nc("@label", "Check compatibility") + "</a>"
-                font: UM.Theme.getFont("default")
+                font: UM.Theme.getFont("doppiobis_default")
                 color: UM.Theme.getColor("text")
                 linkColor: UM.Theme.getColor("text_link")
                 verticalAlignment: Text.AlignTop
@@ -607,7 +604,7 @@ Column
     {
         id: machineExtruderCount
 
-        containerStack: Cura.MachineManager.activeMachine
+        containerStackId: Cura.MachineManager.activeMachineId
         key: "machine_extruder_count"
         watchedProperties: [ "value" ]
         storeIndex: 0

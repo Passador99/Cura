@@ -73,7 +73,4 @@ Menu
     MenuSeparator {}
 
     MenuItem { action: Cura.Actions.expandSidebar; }
-	
-    MenuSeparator {}
-    MenuItem { action: Cura.Actions.toggleFullScreen; }
 }

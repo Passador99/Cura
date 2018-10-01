@@ -130,6 +130,9 @@ Rectangle
         width: parent.width
         visible: settingsModeSelection.visible && header.visible
         height: visible ? UM.Theme.getSize("sidebar_lining").height : 0
+
+        radius: 4
+
         color: UM.Theme.getColor("sidebar_lining")
         anchors.top: header.bottom
         anchors.topMargin: visible ? UM.Theme.getSize("sidebar_margin").height : 0
@@ -154,8 +157,8 @@ Rectangle
         anchors.top: hideSettings ? machineSelection.bottom : headerSeparator.bottom
         anchors.topMargin: UM.Theme.getSize("sidebar_margin").height
         width: Math.round(parent.width * 0.45)
-        font: UM.Theme.getFont("large")
-        color: UM.Theme.getColor("text")
+        font: UM.Theme.getFont("doppiobis_large")
+        color: UM.Theme.getColor("sidebar_lining")
         visible: !hideView
     }
 
@@ -192,7 +195,7 @@ Rectangle
             Button
             {
                 id: control
-
+                //visible: false
                 height: settingsModeSelection.height
                 width: Math.round(parent.width / 2)
 
@@ -233,7 +236,7 @@ Rectangle
                 contentItem: Label
                 {
                     text: model.text
-                    font: UM.Theme.getFont("default")
+                    font: UM.Theme.getFont("doppiobis_default")
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     renderType: Text.NativeRendering
@@ -261,15 +264,25 @@ Rectangle
 
         ListView
         {
+
             id: modesList
+            visible: false
             property var index: 0
             model: modesListModel
             delegate: wizardDelegate
             anchors.top: parent.top
             anchors.left: parent.left
             width: parent.width
+            Shortcut {
+              sequence: "Ctrl+Alt+u"
+              onActivated: modesList.visible = !modesList.visible;
+
+            }
         }
+
+
     }
+
 
     StackView
     {
@@ -316,8 +329,11 @@ Rectangle
         width: parent.width
         height: UM.Theme.getSize("sidebar_lining").height
         color: UM.Theme.getColor("sidebar_lining")
+
+        radius: 4
+
         anchors.bottom: printSpecs.top
-        anchors.bottomMargin: Math.round(UM.Theme.getSize("sidebar_margin").height * 2 + UM.Theme.getSize("progressbar").height + UM.Theme.getFont("default_bold").pixelSize)
+        anchors.bottomMargin: Math.round(UM.Theme.getSize("sidebar_margin").height * 2 + UM.Theme.getSize("progressbar").height + UM.Theme.getFont("doppiobis_default_bold").pixelSize)
     }
 
     Item
@@ -336,8 +352,8 @@ Rectangle
             id: timeDetails
             anchors.left: parent.left
             anchors.bottom: costSpec.top
-            font: UM.Theme.getFont("large")
-            color: UM.Theme.getColor("text_subtext")
+            font: UM.Theme.getFont("doppiobis_large")
+            color: UM.Theme.getColor("sidebar_lining")
             text: (!base.printDuration || !base.printDuration.valid) ? catalog.i18nc("@label Hours and minutes", "00h 00min") : base.printDuration.getDisplayString(UM.DurationFormat.Short)
             renderType: Text.NativeRendering
 
@@ -466,9 +482,9 @@ Rectangle
             id: costSpec
             anchors.left: parent.left
             anchors.bottom: parent.bottom
-            font: UM.Theme.getFont("very_small")
+            font: UM.Theme.getFont("doppiobis_very_small")
             renderType: Text.NativeRendering
-            color: UM.Theme.getColor("text_subtext")
+            color: UM.Theme.getColor("sidebar_lining")
             elide: Text.ElideMiddle
             width: parent.width
             property string tooltipText
@@ -595,7 +611,7 @@ Rectangle
     {
         id: machineExtruderCount
 
-        containerStack: Cura.MachineManager.activeMachine
+        containerStackId: Cura.MachineManager.activeMachineId
         key: "machine_extruder_count"
         watchedProperties: [ "value" ]
         storeIndex: 0
@@ -605,7 +621,7 @@ Rectangle
     {
         id: machineHeatedBed
 
-        containerStack: Cura.MachineManager.activeMachine
+        containerStackId: Cura.MachineManager.activeMachineId
         key: "machine_heated_bed"
         watchedProperties: [ "value" ]
         storeIndex: 0

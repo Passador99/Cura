@@ -1,11 +1,11 @@
 {
     "version": 2,
-    "name": "Ultimaker",
+    "name": "Other",
     "inherits": "fdmprinter",
     "metadata": {
-        "author": "Ultimaker",
+        "author": "Other",
         "manufacturer": "Ultimaker B.V.",
-        "category": "Ultimaker",
+        "category": "Other",
         "visible": false,
         "exclude_materials": [ "generic_hips", "generic_petg" ]
     },

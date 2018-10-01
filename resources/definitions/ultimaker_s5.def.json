@@ -7,7 +7,7 @@
         "author": "Ultimaker",
         "manufacturer": "Ultimaker B.V.",
         "category": "Ultimaker",
-        "visible": true,
+        "visible": false,
         "file_formats": "application/x-ufp;text/x-gcode",
         "platform": "ultimaker_s5_platform.obj",
         "platform_texture": "UltimakerS5backplate.png",

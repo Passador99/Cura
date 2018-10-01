@@ -125,10 +125,10 @@ Menu
         id: group
     }
 
-    MenuSeparator {}
+    //MenuSeparator {}
 
-    MenuItem
-    {
-        action: Cura.Actions.manageMaterials
-    }
+    //MenuItem
+    //{
+    //    action: Cura.Actions.manageMaterials
+    //}
 }

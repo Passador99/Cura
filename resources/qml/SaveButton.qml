@@ -7,7 +7,6 @@ import QtQuick.Controls.Styles 1.1
 import QtQuick.Layouts 1.1
 
 import UM 1.1 as UM
-import Cura 1.0 as Cura
 
 Item {
     id: base;
@@ -67,7 +66,7 @@ Item {
         anchors.left: parent.left
         anchors.leftMargin: UM.Theme.getSize("sidebar_margin").width
 
-        color: UM.Theme.getColor("text")
+        color: UM.Theme.getColor("sidebar_lining")
         font: UM.Theme.getFont("default_bold")
         text: statusText;
     }
@@ -257,9 +256,7 @@ Item {
             text: UM.OutputDeviceManager.activeDeviceShortDescription
             onClicked:
             {
-                forceActiveFocus();
-                UM.OutputDeviceManager.requestWriteToDevice(UM.OutputDeviceManager.activeDevice, PrintInformation.jobName,
-                    { "filter_by_machine": true, "preferred_mimetypes": Cura.MachineManager.activeMachine.preferred_output_file_formats });
+                UM.OutputDeviceManager.requestWriteToDevice(UM.OutputDeviceManager.activeDevice, PrintInformation.jobName, { "filter_by_machine": true, "preferred_mimetype":Printer.preferredOutputMimetype })
             }
 
             style: ButtonStyle {

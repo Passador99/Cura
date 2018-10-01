@@ -17,7 +17,7 @@ UM.Dialog
     id: base
     title: catalog.i18nc("@title:window", "Add Printer")
     property bool firstRun: false
-    property string preferredCategory: "Ultimaker"
+    property string preferredCategory: "Sharebot"
     property string activeCategory: preferredCategory
 
     minimumWidth: UM.Theme.getSize("modal_window_minimum").width
@@ -79,7 +79,6 @@ UM.Dialog
             section.property: "section"
             section.delegate: Button
             {
-                id: machineSectionButton
                 text: section
                 width: machineList.width
                 style: ButtonStyle
@@ -215,7 +214,6 @@ UM.Dialog
 
     Button
     {
-        id: addPrinterButton
         text: catalog.i18nc("@action:button", "Add Printer")
         anchors.bottom: parent.bottom
         anchors.right: parent.right

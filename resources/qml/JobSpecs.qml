@@ -62,7 +62,7 @@ Item {
                             height: UM.Theme.getSize("save_button_specs_icons").height;
                             sourceSize.width: width;
                             sourceSize.height: width;
-                            color: control.hovered ? UM.Theme.getColor("text_scene_hover") : UM.Theme.getColor("text_scene");
+                            color: control.hovered ? UM.Theme.getColor("text_scene_hover") : UM.Theme.getColor("sidebar_lining");
                             source: UM.Theme.getIcon("pencil");
                         }
                     }
@@ -81,7 +81,7 @@ Item {
                 text: PrintInformation.jobName
                 horizontalAlignment: TextInput.AlignRight
                 onEditingFinished: {
-                    var new_name = text == "" ? catalog.i18nc("@text Print job name", "Untitled") : text;
+                    var new_name = text == "" ? "unnamed" : text;
                     PrintInformation.setJobName(new_name, true);
                     printJobTextfield.focus = false;
                 }
@@ -89,8 +89,8 @@ Item {
                     regExp: /^[^\\ \/ \*\?\|\[\]]*$/
                 }
                 style: TextFieldStyle{
-                    textColor: UM.Theme.getColor("text_scene");
-                    font: UM.Theme.getFont("default_bold");
+                    textColor: UM.Theme.getColor("sidebar_lining");
+                    font: UM.Theme.getFont("doppiobis_default_bold");
                     background: Rectangle {
                         opacity: 0
                         border.width: 0
@@ -125,7 +125,7 @@ Item {
         height: UM.Theme.getSize("jobspecs_line").height
         verticalAlignment: Text.AlignVCenter
         font: UM.Theme.getFont("small")
-        color: UM.Theme.getColor("text_scene")
+        color: UM.Theme.getColor("sidebar_lining")
         text: CuraApplication.getSceneBoundingBoxString
     }
 

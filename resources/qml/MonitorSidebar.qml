@@ -181,7 +181,7 @@ Rectangle
     {
         id: machineExtruderCount
 
-        containerStack: Cura.MachineManager.activeMachine
+        containerStackId: Cura.MachineManager.activeMachineId
         key: "machine_extruder_count"
         watchedProperties: [ "value" ]
         storeIndex: 0
@@ -191,7 +191,7 @@ Rectangle
     {
         id: machineHeatedBed
 
-        containerStack: Cura.MachineManager.activeMachine
+        containerStackId: Cura.MachineManager.activeMachineId
         key: "machine_heated_bed"
         watchedProperties: [ "value" ]
         storeIndex: 0

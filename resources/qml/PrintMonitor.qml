@@ -26,6 +26,7 @@ Column
 
     OutputDeviceHeader
     {
+        width: parent.width
         outputDevice: connectedDevice
     }
 
@@ -78,18 +79,18 @@ Column
     UM.SettingPropertyProvider
     {
         id: bedTemperature
-        containerStack: Cura.MachineManager.activeMachine
+        containerStackId: Cura.MachineManager.activeMachineId
         key: "material_bed_temperature"
         watchedProperties: ["value", "minimum_value", "maximum_value", "resolve"]
         storeIndex: 0
 
-        property var resolve: Cura.MachineManager.activeStack != Cura.MachineManager.activeMachine ? properties.resolve : "None"
+        property var resolve: Cura.MachineManager.activeStackId != Cura.MachineManager.activeMachineId ? properties.resolve : "None"
     }
 
     UM.SettingPropertyProvider
     {
         id: machineExtruderCount
-        containerStack: Cura.MachineManager.activeMachine
+        containerStackId: Cura.MachineManager.activeMachineId
         key: "machine_extruder_count"
         watchedProperties: ["value"]
     }

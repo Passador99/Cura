@@ -63,7 +63,7 @@ UM.Dialog
                 right: parent.right
             }
 
-            text: catalog.i18nc("@text:window", "Cura sends anonymous data to Ultimaker in order to improve the print quality and user experience. Below is an example of all the data that is sent.")
+            text: catalog.i18nc("@text:window", "Continuum sends anonymous data to Sharebot in order to improve the print quality and user experience. Below is an example of all the data that is sent.")
             wrapMode: Text.WordWrap
         }
 
@@ -108,7 +108,7 @@ UM.Dialog
         RadioButton
         {
             id: allowSendButton
-            text: catalog.i18nc("@text:window", "Allow sending these data to Ultimaker and help us improve Cura")
+            text: catalog.i18nc("@text:window", "Allow sending these data to Sharebot and help us improve Continuum")
             exclusiveGroup: group
             onClicked:
             {

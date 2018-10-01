@@ -1,0 +1,66 @@
+{
+    "version": 2,
+    "name": "Sharebot QXXL",
+    "inherits": "fdmprinter",
+    "metadata":
+    {
+        "visible": true,
+        "author": "Sergio Passador",
+        "manufacturer": "Sharebot",
+        "file_formats": "text/x-gcode",
+        "icon": "icon_ultimaker2",
+        "has_materials": true,
+        "platform": "sharebot_qxxl_platform.stl",
+
+        "has_machine_quality": false,
+        "preferred_quality_type": "normal",
+        "machine_extruder_trains":
+        {
+            "0": "sharebot_qxxl_extruder_0"
+        }
+    },
+
+    "overrides":
+    {
+        "machine_name":
+        {
+            "default_value": "Sharebot QXXL"
+        },
+        "machine_heated_bed":
+        {
+            "default_value": true
+        },
+        "machine_width":
+        {
+            "default_value": 350
+        },
+        "machine_height":
+        {
+            "default_value": 310
+        },
+        "machine_depth":
+        {
+            "default_value": 740
+        },
+        "machine_center_is_zero":
+        {
+            "default_value": false
+        },
+        "gantry_height":
+        {
+            "default_value": 30
+        },
+        "machine_gcode_flavor":
+        {
+            "default_value": "RepRap (Marlin/Sprinter)"
+        },
+        "machine_start_gcode":
+        {
+            "default_value": "G28\nM400\nT0\nG1 Z15 F500\nM400\nG29\nM400\nG92 E0\nG1 Z3 F500\nM201 X1500 Y1500\n M993 S1 P2"
+        },
+        "machine_end_gcode":
+        {
+            "default_value": "M104 S0\nM190 S0\nM107\nG28\nM84\nM201 X2000 Y2000"
+        }
+    }
+}

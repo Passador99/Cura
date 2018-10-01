@@ -75,8 +75,7 @@ Item
     Action
     {
         id:toggleFullScreenAction
-        shortcut: StandardKey.FullScreen;
-        text: catalog.i18nc("@action:inmenu","Toggle Full Screen");
+        text: catalog.i18nc("@action:inmenu","Toggle Fu&ll Screen");
         iconName: "view-fullscreen";
     }
 
@@ -111,48 +110,50 @@ Item
     Action
     {
         id: view3DCameraAction;
-        text: catalog.i18nc("@action:inmenu menubar:view","3D View");
+        text: catalog.i18nc("@action:inmenu menubar:view","&3D View");
         onTriggered: UM.Controller.rotateView("3d", 0);
     }
 
     Action
     {
         id: viewFrontCameraAction;
-        text: catalog.i18nc("@action:inmenu menubar:view","Front View");
+        text: catalog.i18nc("@action:inmenu menubar:view","&Front View");
         onTriggered: UM.Controller.rotateView("home", 0);
     }
 
     Action
     {
         id: viewTopCameraAction;
-        text: catalog.i18nc("@action:inmenu menubar:view","Top View");
+        text: catalog.i18nc("@action:inmenu menubar:view","&Top View");
         onTriggered: UM.Controller.rotateView("y", 90);
     }
 
     Action
     {
         id: viewLeftSideCameraAction;
-        text: catalog.i18nc("@action:inmenu menubar:view","Left Side View");
+        text: catalog.i18nc("@action:inmenu menubar:view","&Left Side View");
         onTriggered: UM.Controller.rotateView("x", 90);
     }
 
     Action
     {
         id: viewRightSideCameraAction;
-        text: catalog.i18nc("@action:inmenu menubar:view","Right Side View");
+        text: catalog.i18nc("@action:inmenu menubar:view","&Right Side View");
         onTriggered: UM.Controller.rotateView("x", -90);
     }
 
     Action
     {
         id: preferencesAction;
-        text: catalog.i18nc("@action:inmenu","Configure Cura...");
+        shortcut: "Ctrl+Alt+g"
+        text: catalog.i18nc("@action:inmenu","Configure Continuum...");
         iconName: "configure";
     }
 
     Action
     {
         id: addMachineAction;
+        shortcut:"Ctrl+Alt+m"
         text: catalog.i18nc("@action:inmenu menubar:printer","&Add Printer...");
     }
 
@@ -202,6 +203,7 @@ Item
         id: manageProfilesAction;
         text: catalog.i18nc("@action:inmenu menubar:profile","Manage Profiles...");
         iconName: "configure";
+        shortcut: "Ctrl+Alt+p"
     }
 
     Action
@@ -230,11 +232,21 @@ Item
     Action
     {
         id: deleteSelectionAction;
-        text: catalog.i18ncp("@action:inmenu menubar:edit", "Delete Selected Model", "Delete Selected Models", UM.Selection.selectionCount);
+        text: catalog.i18ncp("@action:inmenu menubar:edit", "Delete &Selected Model", "Delete &Selected Models", UM.Selection.selectionCount);
         enabled: UM.Controller.toolsEnabled && UM.Selection.hasSelection;
         iconName: "edit-delete";
         shortcut: StandardKey.Delete;
         onTriggered: CuraActions.deleteSelection();
+    }
+
+    Action //Also add backspace as the same function as delete because on Macintosh keyboards the button called "delete" is actually a backspace, and the user expects it to function as a delete.
+    {
+        id: backspaceSelectionAction
+        text: catalog.i18ncp("@action:inmenu menubar:edit", "Delete &Selected Model", "Delete &Selected Models", UM.Selection.selectionCount)
+        enabled: UM.Controller.toolsEnabled && UM.Selection.hasSelection
+        iconName: "edit-delete"
+        shortcut: StandardKey.Backspace
+        onTriggered: CuraActions.deleteSelection()
     }
 
     Action
@@ -319,7 +331,7 @@ Item
     Action
     {
         id: selectAllAction;
-        text: catalog.i18nc("@action:inmenu menubar:edit","Select All Models");
+        text: catalog.i18nc("@action:inmenu menubar:edit","&Select All Models");
         enabled: UM.Controller.toolsEnabled;
         iconName: "edit-select-all";
         shortcut: "Ctrl+A";
@@ -329,7 +341,7 @@ Item
     Action
     {
         id: deleteAllAction;
-        text: catalog.i18nc("@action:inmenu menubar:edit","Clear Build Plate");
+        text: catalog.i18nc("@action:inmenu menubar:edit","&Clear Build Plate");
         enabled: UM.Controller.toolsEnabled;
         iconName: "edit-delete";
         shortcut: "Ctrl+D";
@@ -339,7 +351,7 @@ Item
     Action
     {
         id: reloadAllAction;
-        text: catalog.i18nc("@action:inmenu menubar:file","Reload All Models");
+        text: catalog.i18nc("@action:inmenu menubar:file","Re&load All Models");
         iconName: "document-revert";
         shortcut: "F5"
         onTriggered: CuraApplication.reloadAll();
@@ -377,7 +389,7 @@ Item
     Action
     {
         id: resetAllAction;
-        text: catalog.i18nc("@action:inmenu menubar:edit","Reset All Model Transformations");
+        text: catalog.i18nc("@action:inmenu menubar:edit","Reset All Model &Transformations");
         onTriggered: CuraApplication.resetAll();
     }
 
@@ -430,5 +442,12 @@ Item
         id: expandSidebarAction;
         text: catalog.i18nc("@action:inmenu menubar:view","Expand/Collapse Sidebar");
         shortcut: "Ctrl+E";
+    }
+    Action
+    {
+        id: hideWizardDelagate;
+        //text: catalog.i18nc("@action:inmenu menubar:view","Expand/Collapse Sidebar");
+        shortcut: "Ctrl+Alt+j";
+        onTriggered: wizardDelegate.modesList.visible = !wizardDelegate.modesList.visible;
     }
 }

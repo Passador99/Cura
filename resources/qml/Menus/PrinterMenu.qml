@@ -56,6 +56,6 @@ Menu
         visible: localPrinterMenu.count > 0
     }
 
-    MenuItem { action: Cura.Actions.addMachine; }
-    MenuItem { action: Cura.Actions.configureMachines; }
+    //MenuItem { action: Cura.Actions.addMachine; }
+    //MenuItem { action: Cura.Actions.configureMachines; }
 }

@@ -17,23 +17,9 @@ Item
 
     // Children
     UM.I18nCatalog { id: catalog; name: "cura"; }
-    Cura.MaterialBrandsModel
-    {
-        id: materialsModel
-        extruderPosition: Cura.ExtruderManager.activeExtruderIndex
-    }
-
-    Cura.FavoriteMaterialsModel
-    {
-        id: favoriteMaterialsModel
-        extruderPosition: Cura.ExtruderManager.activeExtruderIndex
-    }
-
-    Cura.GenericMaterialsModel
-    {
-        id: genericMaterialsModel
-        extruderPosition: Cura.ExtruderManager.activeExtruderIndex
-    }
+    Cura.MaterialBrandsModel { id: materialsModel }
+    Cura.FavoriteMaterialsModel { id: favoriteMaterialsModel }
+    Cura.GenericMaterialsModel { id: genericMaterialsModel }
 
     property var currentType: null
     property var currentBrand: null

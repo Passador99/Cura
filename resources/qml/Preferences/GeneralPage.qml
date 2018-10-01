@@ -678,14 +678,15 @@ UM.PreferencesPage
                 visible: pluginExistsAndEnabled("UpdateChecker")
                 width: childrenRect.width
                 height: visible ? childrenRect.height : 0
-                text: catalog.i18nc("@info:tooltip","Should Cura check for updates when the program is started?")
+                text: catalog.i18nc("@info:tooltip","Should Continuum check for updates when the program is started?")
 
                 CheckBox
                 {
                     id: checkUpdatesCheckbox
                     text: catalog.i18nc("@option:check","Check for updates on start")
-                    checked: boolCheck(UM.Preferences.getValue("info/automatic_update_check"))
-                    onCheckedChanged: UM.Preferences.setValue("info/automatic_update_check", checked)
+                    checked: false
+                    //checked: boolCheck(UM.Preferences.getValue("info/automatic_update_check"))
+                    //onCheckedChanged: UM.Preferences.setValue("info/automatic_update_check", checked)
                 }
             }
 
@@ -700,8 +701,9 @@ UM.PreferencesPage
                 {
                     id: sendDataCheckbox
                     text: catalog.i18nc("@option:check","Send (anonymous) print information")
-                    checked: boolCheck(UM.Preferences.getValue("info/send_slice_info"))
-                    onCheckedChanged: UM.Preferences.setValue("info/send_slice_info", checked)
+                    checked: false
+                    //checked: boolCheck(UM.Preferences.getValue("info/send_slice_info"))
+                    //onCheckedChanged: UM.Preferences.setValue("info/send_slice_info", checked)
                 }
 
                 Button

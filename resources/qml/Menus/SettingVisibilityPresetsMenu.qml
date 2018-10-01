@@ -29,6 +29,7 @@ Menu
             onTriggered:
             {
                 settingVisibilityPresetsModel.setActivePreset(model.id);
+                showSettingVisibilityProfile();
             }
         }
 

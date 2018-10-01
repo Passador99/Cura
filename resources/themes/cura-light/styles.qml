@@ -5,6 +5,7 @@ import QtQuick 2.1
 import QtQuick.Controls 1.1
 import QtQuick.Controls.Styles 1.1
 
+
 import UM 1.1 as UM
 
 QtObject {
@@ -106,8 +107,8 @@ QtObject {
                     anchors.right: parent.right
                     anchors.bottom: parent.bottom
                     width: parent.width
-                    height: Theme.getSize("sidebar_header_highlight").height
-                    color: control.checked ? UM.Theme.getColor("sidebar_header_highlight") : UM.Theme.getColor("sidebar_header_highlight_hover")
+                    height: Theme.getSize("sidebar_header_highlight_sharebot").height
+                    color: control.checked ? UM.Theme.getColor("sidebar_header_highlight_sharebot") : UM.Theme.getColor("sidebar_header_highlight_hover_sharebot")
                     visible: control.hovered || control.checked
                 }
             }
@@ -264,12 +265,12 @@ QtObject {
                 UM.PointingRectangle {
                     id: button_tooltip
 
-                    anchors.left: parent.right
-                    anchors.leftMargin: Theme.getSize("button_tooltip_arrow").width * 2
-                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.top: parent.bottom
+                    anchors.topMargin: Theme.getSize("button_tooltip_arrow").height * 2
+                    anchors.horizontalCenter: parent.horizontalCenter
 
-                    target: Qt.point(parent.x, y + Math.round(height/2))
-                    arrowSize: Theme.getSize("button_tooltip_arrow").width
+                    //target: Qt.point(parent.x , y + Math.round(height/2))
+                    //arrowSize: Theme.getSize("button_tooltip_arrow").height
                     color: Theme.getColor("button_tooltip")
                     opacity: control.hovered ? 1.0 : 0.0;
                     visible: control.text != ""
@@ -298,6 +299,8 @@ QtObject {
                     anchors.fill: parent;
                     property bool down: control.pressed || (control.checkable && control.checked);
 
+                    radius: 40
+                    
                     color:
                     {
                         if(control.customColor !== undefined && control.customColor !== null)
@@ -1051,11 +1054,11 @@ QtObject {
                     {
                         if (control.hovered)
                         {
-                            return UM.Theme.getColor("primary_hover")
+                            return UM.Theme.getColor("primary_hover_sharebot")
                         }
                         else
                         {
-                            return UM.Theme.getColor("primary")
+                            return UM.Theme.getColor("primary_sharebot")
                         }
                     }
 

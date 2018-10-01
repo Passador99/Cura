@@ -16,7 +16,7 @@ UM.MainWindow
 {
     id: base
     //: Cura application window title
-    title: catalog.i18nc("@title:window","Ultimaker Cura");
+    title: catalog.i18nc("@title:window","Sharebot Continuum");
     viewportRect: Qt.rect(0, 0, (base.width - sidebar.width) / base.width, 1.0)
     property bool showPrintMonitor: false
 
@@ -104,13 +104,11 @@ UM.MainWindow
                 title: catalog.i18nc("@title:menu menubar:toplevel","&File");
                 MenuItem
                 {
-                    id: newProjectMenu
                     action: Cura.Actions.newProject;
                 }
 
                 MenuItem
                 {
-                    id: openMenu
                     action: Cura.Actions.open;
                 }
 
@@ -150,7 +148,6 @@ UM.MainWindow
 
                 MenuItem
                 {
-                    id: exportSelectionMenu
                     text: catalog.i18nc("@action:inmenu menubar:file", "Export Selection...");
                     enabled: UM.Selection.hasSelection;
                     iconName: "document-save-as";
@@ -159,11 +156,7 @@ UM.MainWindow
 
                 MenuSeparator { }
 
-                MenuItem
-                {
-                    id: reloadAllMenu
-                    action: Cura.Actions.reloadAll;
-                }
+                MenuItem { action: Cura.Actions.reloadAll; }
 
                 MenuSeparator { }
 
@@ -172,6 +165,8 @@ UM.MainWindow
 
             Menu
             {
+                visible: false
+
                 title: catalog.i18nc("@title:menu menubar:toplevel","&Edit");
 
                 MenuItem { action: Cura.Actions.undo; }
@@ -189,10 +184,13 @@ UM.MainWindow
                 MenuItem { action: Cura.Actions.unGroupObjects;}
             }
 
-            ViewMenu { title: catalog.i18nc("@title:menu", "&View") }
+            ViewMenu { title: catalog.i18nc("@title:menu", "&View")
+            visible: false
+          }
 
             Menu
             {
+                visible: false
                 id: settingsMenu
                 title: catalog.i18nc("@title:menu", "&Settings")
 
@@ -249,6 +247,8 @@ UM.MainWindow
 
             Menu
             {
+                visible: false
+
                 id: extension_menu
                 title: catalog.i18nc("@title:menu menubar:toplevel","E&xtensions");
 
@@ -283,6 +283,7 @@ UM.MainWindow
 
             Menu
             {
+                visible: false
                 id: plugin_menu
                 title: catalog.i18nc("@title:menu menubar:toplevel", "&Toolbox")
 
@@ -291,7 +292,7 @@ UM.MainWindow
 
             Menu
             {
-                id: preferencesMenu
+                visible: false
                 title: catalog.i18nc("@title:menu menubar:toplevel","P&references");
 
                 MenuItem { action: Cura.Actions.preferences; }
@@ -299,12 +300,12 @@ UM.MainWindow
 
             Menu
             {
-                id: helpMenu
+                //: Help menu
                 title: catalog.i18nc("@title:menu menubar:toplevel","&Help");
 
                 MenuItem { action: Cura.Actions.showProfileFolder; }
                 MenuItem { action: Cura.Actions.documentation; }
-                MenuItem { action: Cura.Actions.reportBug; }
+                //MenuItem { action: Cura.Actions.reportBug; }
                 MenuSeparator { }
                 MenuItem { action: Cura.Actions.about; }
             }
@@ -381,9 +382,11 @@ UM.MainWindow
                 tooltip: ""
                 anchors
                 {
-                    top: topbar.bottom;
-                    topMargin: UM.Theme.getSize("default_margin").height;
+                    top: menu.bottom;
+                    //topMargin: UM.Theme.getSize("default_margin").height;
                     left: parent.left;
+                    leftMargin: UM.Theme.getSize("toolbar_right_padding").width;
+                    //horizontalCenter: topbar.horizontalCenter;
                 }
                 action: Cura.Actions.open;
             }
@@ -396,9 +399,10 @@ UM.MainWindow
                 property int mouseY: base.mouseY
 
                 anchors {
-                    top: openFileButton.bottom;
-                    topMargin: UM.Theme.getSize("window_margin").height;
-                    left: parent.left;
+                    top: menu.bottom;
+                    left: openFileButton.right;
+                    leftMargin: UM.Theme.getSize("window_margin").width;
+                  //  left: parent.left;
                 }
             }
 

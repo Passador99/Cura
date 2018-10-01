@@ -63,6 +63,8 @@ Rectangle
 
     Row
     {
+        visible: false
+
         id: stagesMenuContainer
         anchors.left: logo.right
         anchors.leftMargin: UM.Theme.getSize("topbar_logo_right_margin").width
@@ -101,7 +103,8 @@ Rectangle
         height: 30
 
         spacing: 2
-        visible: UM.Controller.activeStage.stageId != "MonitorStage"
+        //visible: UM.Controller.activeStage.stageId != "MonitorStage"
+        visible: false
 
         anchors
         {
@@ -159,6 +162,7 @@ Rectangle
             onClicked: UM.Controller.rotateView("x", -90)
             visible: base.width - allItemsWidth > 0
         }
+
     }
 
     ComboBox
@@ -173,6 +177,7 @@ Rectangle
 
         style: UM.Theme.styles.combobox
         visible: UM.Controller.activeStage.stageId != "MonitorStage"
+        //visible: false
 
         model: UM.ViewModel { }
         textRole: "name"

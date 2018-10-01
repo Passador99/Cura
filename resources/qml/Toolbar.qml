@@ -1,4 +1,4 @@
-// Copyright (c) 2018 Ultimaker B.V.
+// Copyright (c) 2015 Ultimaker B.V.
 // Cura is released under the terms of the LGPLv3 or higher.
 
 import QtQuick 2.2
@@ -16,13 +16,14 @@ Item
     width: buttons.width;
     height: buttons.height
     property int activeY
+    property int activeX
 
-    Column
+    Row
     {
         id: buttons;
 
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
+        anchors.right: parent.left;
+        anchors.left: parent.right;
         spacing: UM.Theme.getSize("button_lining").width
 
         Repeater
@@ -34,22 +35,21 @@ Item
             height: childrenRect.height
             Button
             {
-                text: model.name + (model.shortcut ? (" (" + model.shortcut + ")") : "")
+                text: model.name
                 iconSource: (UM.Theme.getIcon(model.icon) != "") ? UM.Theme.getIcon(model.icon) : "file:///" + model.location + "/" + model.icon
                 checkable: true
                 checked: model.active
                 enabled: model.enabled && UM.Selection.hasSelection && UM.Controller.toolsEnabled
                 style: UM.Theme.styles.tool_button
 
-                onCheckedChanged:
-                {
-                    if (checked)
-                    {
+                onCheckedChanged: {
+                    if (checked) {
                         base.activeY = y;
+                        base.activeX = x
                     }
                 }
 
-                //Workaround since using ToolButton's onClicked would break the binding of the checked property, instead
+                //Workaround since using ToolButton"s onClicked would break the binding of the checked property, instead
                 //just catch the click so we do not trigger that behaviour.
                 MouseArea
                 {
@@ -59,7 +59,7 @@ Item
                         forceActiveFocus() //First grab focus, so all the text fields are updated
                         if(parent.checked)
                         {
-                            UM.Controller.setActiveTool(null);
+                            UM.Controller.setActiveTool(null)
                         }
                         else
                         {
@@ -87,24 +87,23 @@ Item
     {
         id: panelBorder;
 
-        anchors.left: parent.right;
-        anchors.leftMargin: UM.Theme.getSize("default_margin").width;
-        anchors.top: base.top;
-        anchors.topMargin: base.activeY
+        anchors.top: parent.bottom;
+        anchors.topMargin: UM.Theme.getSize("default_margin").width;
+        //anchors.top: base.top;
+        //anchors.topMargin: base.activeX
         z: buttons.z -1
 
-        target: Qt.point(parent.right, base.activeY +  Math.round(UM.Theme.getSize("button").height/2))
-        arrowSize: UM.Theme.getSize("default_arrow").width
+        //To see the arrows uncomment next 2 lines
+        //target: Qt.point(parent.bottom, base.activeX +  Math.round(UM.Theme.getSize("button").width/2))
+        //arrowSize: UM.Theme.getSize("default_arrow").width
 
         width:
         {
-            if (panel.item && panel.width > 0)
-            {
-                 return Math.max(panel.width + 2 * UM.Theme.getSize("default_margin").width);
+            if (panel.item && panel.width > 0){
+                 return Math.max(panel.width + 2 * UM.Theme.getSize("default_margin").width)
             }
-            else
-            {
-                return 0;
+            else {
+                return 0
             }
         }
         height: panel.item ? panel.height + 2 * UM.Theme.getSize("default_margin").height : 0;
@@ -128,7 +127,7 @@ Item
             x: UM.Theme.getSize("default_margin").width;
             y: UM.Theme.getSize("default_margin").height;
 
-            source: UM.ActiveTool.valid ? UM.ActiveTool.activeToolPanel : ""
+            source: UM.ActiveTool.valid ? UM.ActiveTool.activeToolPanel : "";
             enabled: UM.Controller.toolsEnabled;
         }
     }
@@ -152,6 +151,6 @@ Item
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
-        visible: toolHint.text != ""
+        visible: toolHint.text != "";
     }
 }
