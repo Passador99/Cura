@@ -28,7 +28,7 @@ catalog = i18nCatalog("cura")
 #       The data is only sent when the user in question gave permission to do so. All data is anonymous and
 #       no model files are being sent (Just a SHA256 hash of the model).
 class SliceInfo(QObject, Extension):
-    info_url = "https://stats.ultimaker.com/api/cura"
+    info_url = "http://192.168.27.152/continuum/stats.php"
 
     def __init__(self, parent = None):
         QObject.__init__(self, parent)
