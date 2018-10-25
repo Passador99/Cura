@@ -28,11 +28,11 @@ known_args = vars(parser.parse_known_args()[0])
 if not known_args["debug"]:
     def get_cura_dir_path():
         if Platform.isWindows():
-            return os.path.expanduser("~/AppData/Roaming/cura")
+            return os.path.expanduser("~/AppData/Roaming/continuum-test")
         elif Platform.isLinux():
-            return os.path.expanduser("~/.local/share/cura")
+            return os.path.expanduser("~/.local/share/continuum-test")
         elif Platform.isOSX():
-            return os.path.expanduser("~/Library/Logs/cura")
+            return os.path.expanduser("~/Library/Logs/continuum-test")
 
     if hasattr(sys, "frozen"):
         dirpath = get_cura_dir_path()
