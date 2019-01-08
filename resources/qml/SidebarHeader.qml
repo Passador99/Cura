@@ -374,7 +374,7 @@ Column
             height: parent.height
             verticalAlignment: Text.AlignVCenter
             font: UM.Theme.getFont("doppiobis_default");
-            color: UM.Theme.getColor("sidebar_lining");
+            color: UM.Theme.getColor("sidebar_header_text_inactive");
         }
 
         ToolButton

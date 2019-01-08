@@ -66,7 +66,7 @@ Item {
         anchors.left: parent.left
         anchors.leftMargin: UM.Theme.getSize("sidebar_margin").width
 
-        color: UM.Theme.getColor("sidebar_lining")
+        color: UM.Theme.getColor("sidebar_header_text_inactive")
         font: UM.Theme.getFont("default_bold")
         text: statusText;
     }

@@ -158,7 +158,7 @@ Rectangle
         anchors.topMargin: UM.Theme.getSize("sidebar_margin").height
         width: Math.round(parent.width * 0.45)
         font: UM.Theme.getFont("doppiobis_large")
-        color: UM.Theme.getColor("sidebar_lining")
+        color: UM.Theme.getColor("sidebar_header_text_inactive")
         visible: !hideView
     }
 
@@ -353,7 +353,7 @@ Rectangle
             anchors.left: parent.left
             anchors.bottom: costSpec.top
             font: UM.Theme.getFont("doppiobis_large")
-            color: UM.Theme.getColor("sidebar_lining")
+            color: UM.Theme.getColor("sidebar_header_text_inactive")
             text: (!base.printDuration || !base.printDuration.valid) ? catalog.i18nc("@label Hours and minutes", "00h 00min") : base.printDuration.getDisplayString(UM.DurationFormat.Short)
             renderType: Text.NativeRendering
 
@@ -484,7 +484,7 @@ Rectangle
             anchors.bottom: parent.bottom
             font: UM.Theme.getFont("doppiobis_very_small")
             renderType: Text.NativeRendering
-            color: UM.Theme.getColor("sidebar_lining")
+            color: UM.Theme.getColor("sidebar_header_text_inactive")
             elide: Text.ElideMiddle
             width: parent.width
             property string tooltipText

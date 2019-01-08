@@ -176,7 +176,7 @@ Item
                     id: qualityRowTitle
                     text: catalog.i18nc("@label", "Layer Height")
                     font: UM.Theme.getFont("doppiobis_default")
-                    color: UM.Theme.getColor("sidebar_lining")
+                    color: UM.Theme.getColor("sidebar_header_text_inactive")
                 }
 
                 // Show titles for the each quality slider ticks
@@ -193,7 +193,7 @@ Item
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.top: parent.top
                             anchors.topMargin: Math.round(UM.Theme.getSize("sidebar_margin").height / 2)
-                            color: (Cura.MachineManager.activeMachine != null && Cura.QualityProfilesDropDownMenuModel.getItem(index).available) ? UM.Theme.getColor("sidebar_lining") : UM.Theme.getColor("quality_slider_unavailable")
+                            color: (Cura.MachineManager.activeMachine != null && Cura.QualityProfilesDropDownMenuModel.getItem(index).available) ? UM.Theme.getColor("sidebar_header_text_inactive") : UM.Theme.getColor("quality_slider_unavailable")
                             text:
                             {
                                 var result = ""
@@ -342,7 +342,7 @@ Item
                         Rectangle
                         {
                             anchors.verticalCenter: parent.verticalCenter
-                            color: Cura.QualityProfilesDropDownMenuModel.getItem(index).available ? UM.Theme.getColor("sidebar_lining") : UM.Theme.getColor("quality_slider_unavailable")
+                            color: Cura.QualityProfilesDropDownMenuModel.getItem(index).available ? UM.Theme.getColor("sidebar_header_text_inactive") : UM.Theme.getColor("quality_slider_unavailable")
                             width: 1 * screenScaleFactor
                             height: 6 * screenScaleFactor
                             y: 0
@@ -377,14 +377,14 @@ Item
                             //Draw Available line
                             groove: Rectangle {
                                 implicitHeight: 2 * screenScaleFactor
-                                color: UM.Theme.getColor("sidebar_lining")
+                                color: UM.Theme.getColor("sidebar_header_text_inactive")
                                 radius: Math.round(height / 2)
                             }
                             handle: Item {
                                 Rectangle {
                                     id: qualityhandleButton
                                     anchors.centerIn: parent
-                                    color: UM.Theme.getColor("sidebar_lining")
+                                    color: UM.Theme.getColor("sidebar_header_text_inactive")
                                     implicitWidth: 10 * screenScaleFactor
                                     implicitHeight: implicitWidth
                                     radius: Math.round(implicitWidth / 2)
@@ -433,7 +433,7 @@ Item
 
                     text: catalog.i18nc("@label", "Print Speed")
                     font: UM.Theme.getFont("doppiobis_default")
-                    color: UM.Theme.getColor("sidebar_lining")
+                    color: UM.Theme.getColor("sidebar_header_text_inactive")
                     width: Math.round(UM.Theme.getSize("sidebar").width * 0.35)
                     elide: Text.ElideRight
                 }
@@ -445,7 +445,7 @@ Item
 
                     text: catalog.i18nc("@label", "Slower")
                     font: UM.Theme.getFont("doppiobis_default")
-                    color: (qualityModel.availableTotalTicks > 1) ? UM.Theme.getColor("sidebar_lining") : UM.Theme.getColor("quality_slider_unavailable")
+                    color: (qualityModel.availableTotalTicks > 1) ? UM.Theme.getColor("sidebar_header_text_inactive") : UM.Theme.getColor("quality_slider_unavailable")
                     horizontalAlignment: Text.AlignLeft
                 }
 
@@ -456,7 +456,7 @@ Item
 
                     text: catalog.i18nc("@label", "Faster")
                     font: UM.Theme.getFont("doppiobis_default")
-                    color: (qualityModel.availableTotalTicks > 1) ? UM.Theme.getColor("sidebar_lining") : UM.Theme.getColor("quality_slider_unavailable")
+                    color: (qualityModel.availableTotalTicks > 1) ? UM.Theme.getColor("sidebar_header_text_inactive") : UM.Theme.getColor("quality_slider_unavailable")
                     horizontalAlignment: Text.AlignRight
                 }
 
@@ -507,7 +507,7 @@ Item
                     id: infillLabel
                     text: catalog.i18nc("@label", "Infill")
                     font: UM.Theme.getFont("doppiobis_default")
-                    color: UM.Theme.getColor("sidebar_lining")
+                    color: UM.Theme.getColor("sidebar_header_text_inactive")
 
                     anchors.top: parent.top
                     anchors.topMargin: Math.round(UM.Theme.getSize("sidebar_margin").height * 1.7)
@@ -538,7 +538,7 @@ Item
                     text: parseInt(infillDensity.properties.value) + "%"
                     horizontalAlignment: Text.AlignLeft
 
-                    color: infillSlider.enabled ? UM.Theme.getColor("sidebar_lining") : UM.Theme.getColor("quality_slider_unavailable")
+                    color: infillSlider.enabled ? UM.Theme.getColor("sidebar_header_text_inactive") : UM.Theme.getColor("quality_slider_unavailable")
                 }
 
                 // We use a binding to make sure that after manually setting infillSlider.value it is still bound to the property provider
@@ -600,7 +600,7 @@ Item
                             id: groove
                             implicitWidth: 200 * screenScaleFactor
                             implicitHeight: 2 * screenScaleFactor
-                            color: control.enabled ? UM.Theme.getColor("sidebar_lining") : UM.Theme.getColor("quality_slider_unavailable")
+                            color: control.enabled ? UM.Theme.getColor("sidebar_header_text_inactive") : UM.Theme.getColor("quality_slider_unavailable")
                             radius: 1
                         }
 
@@ -608,7 +608,7 @@ Item
                             Rectangle {
                                 id: handleButton
                                 anchors.centerIn: parent
-                                color: control.enabled ? UM.Theme.getColor("sidebar_lining") : UM.Theme.getColor("quality_slider_unavailable")
+                                color: control.enabled ? UM.Theme.getColor("sidebar_header_text_inactive") : UM.Theme.getColor("quality_slider_unavailable")
                                 implicitWidth: 10 * screenScaleFactor
                                 implicitHeight: 10 * screenScaleFactor
                                 radius: 10 * screenScaleFactor
@@ -629,7 +629,7 @@ Item
 
                             Rectangle {
                                 anchors.verticalCenter: parent.verticalCenter
-                                color: control.enabled ? UM.Theme.getColor("sidebar_lining") : UM.Theme.getColor("quality_slider_unavailable")
+                                color: control.enabled ? UM.Theme.getColor("sidebar_header_text_inactive") : UM.Theme.getColor("quality_slider_unavailable")
                                 width: 1 * screenScaleFactor
                                 height: 6 * screenScaleFactor
                                 y: 0
@@ -822,7 +822,7 @@ Item
 
                 text: catalog.i18nc("@label", "Generate Support");
                 font: UM.Theme.getFont("doppiobis_default");
-                color: UM.Theme.getColor("sidebar_lining");
+                color: UM.Theme.getColor("sidebar_header_text_inactive");
                 elide: Text.ElideRight
             }
 
@@ -951,7 +951,7 @@ Item
 
                 text: catalog.i18nc("@label", "Build Plate Adhesion")
                 font: UM.Theme.getFont("doppiobis_default")
-                color: UM.Theme.getColor("sidebar_lining")
+                color: UM.Theme.getColor("sidebar_header_text_inactive")
                 elide: Text.ElideRight
 
                 anchors {

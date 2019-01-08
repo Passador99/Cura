@@ -89,7 +89,7 @@ Item {
                     regExp: /^[^\\ \/ \*\?\|\[\]]*$/
                 }
                 style: TextFieldStyle{
-                    textColor: UM.Theme.getColor("sidebar_lining");
+                    textColor: UM.Theme.getColor("sidebar_header_text_inactive");
                     font: UM.Theme.getFont("doppiobis_default_bold");
                     background: Rectangle {
                         opacity: 0
@@ -125,7 +125,7 @@ Item {
         height: UM.Theme.getSize("jobspecs_line").height
         verticalAlignment: Text.AlignVCenter
         font: UM.Theme.getFont("small")
-        color: UM.Theme.getColor("sidebar_lining")
+        color: UM.Theme.getColor("sidebar_header_text_inactive")
         text: CuraApplication.getSceneBoundingBoxString
     }
 
