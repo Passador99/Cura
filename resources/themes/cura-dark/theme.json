@@ -46,9 +46,9 @@
         "sidebar_lining_green": [90, 145, 123, 255],
         "sidebar_lining_thin": [255, 255, 255, 30],
 
-        "button": [92, 219, 170, 255],
+        "button": [45, 52, 54, 255],
         "button_hover": [90, 145, 123, 255],
-        "button_active": [90, 145, 123, 255],
+        "button_active": [92, 219, 170, 255],
         "button_active_hover": [90, 145, 123, 255],
         "button_text": [255, 255, 255, 255],
         "button_text_hover": [255, 255, 255, 255],
@@ -118,9 +118,9 @@
         "setting_category_active_border": [39, 44, 48, 0],
         "setting_category_active_hover_border": [92, 219, 170, 255],
 
-        "setting_control": [90, 145, 123, 255],
+        "setting_control": [39, 44, 48, 255],
         "setting_control_selected": [34, 39, 42, 255],
-        "setting_control_highlight": [90, 145, 123, 255],
+        "setting_control_highlight": [39, 44, 48, 255],
         "setting_control_border": [255, 255, 255, 38],
         "setting_control_border_highlight": [92, 219, 170, 255],
         "setting_control_text": [255, 255, 255, 255],

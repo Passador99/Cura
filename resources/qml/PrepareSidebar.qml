@@ -264,20 +264,20 @@ Rectangle
 
         ListView
         {
-
+          // here you can use the shortcut Ctrl+Alt+u to hide/unhide the custom menu
             id: modesList
-            visible: false
+            //visible: false
             property var index: 0
             model: modesListModel
             delegate: wizardDelegate
             anchors.top: parent.top
             anchors.left: parent.left
             width: parent.width
-            Shortcut {
+            /*Shortcut {
               sequence: "Ctrl+Alt+u"
               onActivated: modesList.visible = !modesList.visible;
 
-            }
+            }*/
         }
 
 

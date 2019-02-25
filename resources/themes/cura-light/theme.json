@@ -98,13 +98,13 @@
     },
 
     "colors": {
-        "sidebar": [92, 219, 170, 255],
+        "sidebar": [105, 105, 105, 255],
         "lining": [64, 69, 72, 255],
         "viewport_overlay": [0, 6, 9, 222],
 
-        "primary": [92, 219, 170, 255],
-        "primary_hover": [92, 219, 170, 255],
-        "primary_text": [255, 255, 255, 204],
+        "primary": [105, 105, 105, 255],
+        "primary_hover": [105, 105, 105, 255],
+        "primary_text": [255, 255, 255, 255],
         "border": [127, 127, 127, 255],
         "secondary": [241, 242, 242, 255],
 
@@ -115,7 +115,7 @@
         "topbar_button_text_inactive": [128, 128, 128, 255],
         "topbar_button_text_hovered": [255, 255, 255, 255],
 
-        "text": [255, 255, 255, 204],
+        "text": [255, 255, 255, 255],
         "text_detail": [255, 255, 255, 172],
         "text_link": [255, 255, 255, 127],
         "text_inactive": [255, 255, 255, 88],
@@ -136,12 +136,12 @@
         "sidebar_header_highlight_hover": [68, 192, 255, 255],
         "sidebar_header_text_active": [255, 255, 255, 255],
         "sidebar_header_text_hover": [255, 255, 255, 255],
-        "sidebar_header_text_inactive": [255, 255, 255, 127],
+        "sidebar_header_text_inactive": [255, 255, 255, 255],
         "sidebar_lining": [31, 36, 39, 255],
         "sidebar_lining_green": [90, 145, 123, 255],
         "sidebar_lining_thin": [255, 255, 255, 30],
 
-        "button": [92, 219, 170, 255],
+        "button": [105, 105, 105, 255],
         "button_hover": [90, 145, 123, 255],
         "button_active": [90, 145, 123, 255],
         "button_active_hover": [90, 145, 123, 255],
@@ -226,12 +226,12 @@
         "setting_category_active_border": [39, 44, 48, 0],
         "setting_category_active_hover_border": [92, 219, 170, 255],
 
-        "setting_control": [90, 145, 123, 255],
+        "setting_control": [120, 120, 120, 255],
         "setting_control_selected": [34, 39, 42, 255],
-        "setting_control_highlight": [90, 145, 123, 255],
+        "setting_control_highlight": [120, 120, 120, 255],
         "setting_control_border": [255, 255, 255, 38],
         "setting_control_border_highlight": [92, 219, 170, 255],
-        "setting_control_text": [255, 255, 255, 181],
+        "setting_control_text": [255, 255, 255, 255],
         "setting_control_button": [255, 255, 255, 127],
         "setting_control_button_hover": [255, 255, 255, 204],
         "setting_control_disabled": [34, 39, 42, 255],
@@ -307,8 +307,8 @@
         "z_axis": [0, 255, 0, 255],
         "all_axis": [255, 255, 255, 255],
 
-        "viewport_background": [92, 219, 170, 255],
-        "volume_outline": [31, 36, 39, 128],
+        "viewport_background": [120, 120, 120, 255],
+        "volume_outline": [92, 219, 170, 128],
         "buildplate": [169, 169, 169, 255],
         "buildplate_grid": [129, 131, 134, 255],
         "buildplate_grid_minor": [154, 154, 155, 255],
@@ -374,7 +374,7 @@
 
         "default_lining": [0.08, 0.08],
         "default_arrow": [0.8, 0.8],
-        "logo": [19.0, 4.0],
+        "logo": [17.0, 4.0],
 
         "default_margin": [1.0, 1.0],
         "wide_margin": [2.0, 2.0],
